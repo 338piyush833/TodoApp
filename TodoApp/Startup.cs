@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -36,6 +37,10 @@ namespace TodoApp
                 options.UseSqlServer(Configuration.GetConnectionString("sqlConnection"))
             );
 
+            services.AddAuthentication();
+            services.ConfigureIdentity();
+
+            //allow any type of request
             services.AddCors(o => {
                 o.AddPolicy("AllowAll", builder =>
                      builder.AllowAnyOrigin()
