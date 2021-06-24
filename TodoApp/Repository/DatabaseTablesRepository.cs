@@ -9,7 +9,10 @@ using TodoApp.IRepository;
 
 namespace TodoApp.Repository
 {
-    // Here T refers to database table
+    /// <summary>
+    /// This class deals with the datbase tables data by using DatabaseContext
+    /// </summary>
+    /// <typeparam name="T">Table Entity</typeparam>
     public class DatabaseTablesRepository<T> : IDatabaseTablesRepository<T> where T : class
     {
         private readonly DatabaseContext _context;

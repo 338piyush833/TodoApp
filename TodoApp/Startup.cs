@@ -12,6 +12,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TodoApp.Configurations;
 using TodoApp.Data;
 using TodoApp.IRepository;
 using TodoApp.Repository;
@@ -42,7 +43,9 @@ namespace TodoApp
                      .AllowAnyHeader());
             });
 
-            services.AddTransient<IDatabaseRepository, DatabaseRepository>(); 
+            services.AddTransient<IDatabaseRepository, DatabaseRepository>();
+
+            services.AddAutoMapper(typeof(MapperInitilizer));
 
             services.AddSwaggerGen(c =>
             {
